@@ -8,14 +8,13 @@ in classical literature, discovered the undoubtable source. Lorem Ipsum comes fr
 This book is a treatise on the theory of ethics, very popular during the Renaissance. 
 The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.`
 
-const harmlessRansomNote = () => {
-    const noteToArr = note.split( ' ' )
-    const magazineToArr = magazine.split( ' ' )
+const harmlessRansomNote = (passInNote, passedInMagazine) => {
+    const noteToArr = passInNote.split( ' ' )
+    const magazineToArr = passedInMagazine.split( ' ' )
     const magazineObj = {}
 
     // move single words in array in object with the number they appear
     magazineToArr.forEach( word => [
-        // @ts-ignore
         !magazineObj.hasOwnProperty( word ) ? magazineObj[ word ] = 0 : '',
         magazineObj[ word ]++
     ] )
@@ -23,14 +22,13 @@ const harmlessRansomNote = () => {
     // check note
     let noteIsOk = true
     noteToArr.forEach( word => [
-        // @ts-ignore
         magazineObj.hasOwnProperty( word )
             ? ( magazineObj[ word ]--,
-                magazine[word] < 0 ? noteIsOk = false : ''
+                magazineObj[word] < 0 ? noteIsOk = false : ''
             )
             : noteIsOk = false
     ] )
-    console.log(noteIsOk)
+    return noteIsOk
 };
 
-harmlessRansomNote()
+console.log(harmlessRansomNote( note, magazine ))
