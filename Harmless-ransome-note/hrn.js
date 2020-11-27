@@ -1,4 +1,4 @@
-const note = 'Lorem Ipsum is discovered on classical literature';
+const note = 'Lorem Ipsum is discovered  on classical literature';
 const magazine = `Contrary to popular belief, Lorem Ipsum is not simply random text. 
 It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. 
 Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more 
@@ -14,20 +14,28 @@ const harmlessRansomNote = (passInNote, passedInMagazine) => {
     const magazineObj = {}
 
     // move single words in array in object with the number they appear
-    magazineToArr.forEach( word => [
-        !magazineObj.hasOwnProperty( word ) ? magazineObj[ word ] = 0 : '',
-        magazineObj[ word ]++
-    ] )
+    /**
+     * @param {string | number | symbol} word
+     */
+    magazineToArr.forEach( word => {
+        if (!magazineObj.hasOwnProperty( word )) {
+             magazineObj[ word ] = 0 
+        }
+        magazineObj[ word ]++;
+    } )
     
     // check note
     let noteIsOk = true
-    noteToArr.forEach( word => [
-        magazineObj.hasOwnProperty( word )
-            ? ( magazineObj[ word ]--,
-                magazineObj[word] < 0 ? noteIsOk = false : ''
-            )
-            : noteIsOk = false
-    ] )
+    noteToArr.forEach( word => {
+        if ( magazineObj.hasOwnProperty( word ) ) {
+            magazineObj[ word ]--;
+            if ( magazineObj[ word ] < 0 ) {
+                noteIsOk = false;
+            }
+        } else {
+            noteIsOk = false;
+        }
+    } )
     return noteIsOk
 };
 
