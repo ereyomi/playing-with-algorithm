@@ -1,12 +1,24 @@
 
 const caesarCipher = ( str, shiftNum ) => {
+    /*
+    * for large number => but works fine for other numbers
+   * this is a fix to avoid large number looping
+    */
+    shiftNum = shiftNum % 26
     const strArr = str.split( '' );
     const validCharacterArr = 'abcdefghijklmnopqrstuvwxyz'.split( '' )
     let caesarCipher = ''
 
     for ( let i = 0; i < strArr.length; i++ ) {
+        // if its space
+        if ( strArr[ i ] === ' ' ) {
+            caesarCipher += strArr[ i ]
+            // @ts-ignore
+            continue
+        }
+        const strToLower = strArr[ i ].toLowerCase()
         // check string index
-        const stIndex = validCharacterArr.indexOf( strArr[i] );
+        const stIndex = validCharacterArr.indexOf( strToLower );
 
         let newStr
         let shiftingIndex = stIndex + shiftNum
@@ -18,20 +30,23 @@ const caesarCipher = ( str, shiftNum ) => {
         if ( shiftingIndex < 0 ) {
             shiftingIndex = 26  + shiftingIndex
         }
-        // if its space
-        if ( st === ' ' ) {
-            caesarCipher += newStr
-            // @ts-ignore
-            continue
-        }
+        
+        
 
         // incase of capital letter
-        if(strArr[])
+        if ( strArr[ i ] === strToLower.toUpperCase() ) {
+            // get new string at shift
+            newStr = validCharacterArr[ shiftingIndex ].toUpperCase()
+        } else {
+            // get new string at shift
+            newStr = validCharacterArr[ shiftingIndex ]
+        }
         
-        newStr = validCharacterArr[ shiftingIndex ]
-        console.log( newStr )
+        
         caesarCipher += newStr
     }
+
+    console.log(caesarCipher)
 };
 
-caesarCipher('y', -2)
+caesarCipher('Yby', -2)
