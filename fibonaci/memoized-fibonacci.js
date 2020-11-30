@@ -1,4 +1,4 @@
-const memoizedFibonnacci = (index, cache) => {
+const memoizedFibonacci = (index, cache) => {
     cache = cache || [];
 
     if ( cache[ index ] ) {
@@ -7,7 +7,7 @@ const memoizedFibonnacci = (index, cache) => {
         if ( index < 3 ) {
             return 1
         } else {
-            cache[index] = memoizedFibonnacci(index - 1, cache) + memoizedFibonnacci(index-2, cache);
+            cache[index] = memoizedFibonacci(index - 1, cache) + memoizedFibonacci(index-2, cache);
         }
     }
 
@@ -17,4 +17,4 @@ const memoizedFibonnacci = (index, cache) => {
 // this runs on =>  0(2^n) i.e the run time becomes longer with respect to inputted position
 // this is not efficient as it crashes 
 //it has very bad runtime
-console.log(memoizedFibonnacci(15))
+console.log(memoizedFibonacci(15))
