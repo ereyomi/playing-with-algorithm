@@ -19,7 +19,7 @@ const binarySearch = ( arr, key ) => {
     }
 };
 
-const numDict = [ 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ]; // note the array must be in order else you will have to sort the array
+const numDict = [ 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ]; // note the array must be in order i.e sorted else you will have to sort the array
 const searchKey = 8 // num to search
 
 
