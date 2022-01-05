@@ -62,3 +62,22 @@ var longestConsecutive = function(nums) {
     }
     return Math.max(...hash)
 };
+/* 
+ nums=Array.from(new Set(nums)).sort((a,b)=>a-b)
+  if(nums.length==0) return 0
+  if(nums[0]==0 && nums.length==1) return 1
+  const res=[]
+  let counter=1
+
+  for(let i=0; i<nums.length-1;i++){
+    if(nums[i]+1==nums[i+1]){
+      counter++
+    }else{
+      res.push(counter)
+      counter=1
+    }
+    res.push(counter)
+  }
+
+    return Math.max(...res)
+ */
