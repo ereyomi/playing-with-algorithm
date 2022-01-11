@@ -8,7 +8,6 @@ const getMean = ( arrData ) => {
 }
 
 const getMedian = ( arrData ) => {
-
     let median = 0
     // sort array
     const sortArr = arrData.sort( ( a, b ) => a - b )
@@ -22,8 +21,7 @@ const getMedian = ( arrData ) => {
         let medianB = sortArr[ ( sortArr.length / 2 ) - 1 ]
         median = (medianA + medianB) / 2
     }
-
-    return median
+    return median;
 }
 
 const getMode = ( arrData ) => {
@@ -34,7 +32,6 @@ const getMode = ( arrData ) => {
         }
          modeObj[ arrData[i]] +=1 
     }
-
     let mode = []
     let maxFrequency = 0
     for ( let num in modeObj ) {
@@ -44,14 +41,10 @@ const getMode = ( arrData ) => {
         }
 
         if ( modeObj[ num ] > maxFrequency ) {
-            mode.push( num )
+            mode = [ num ]; // array is reduce to the highest
             maxFrequency = modeObj[ num ]
         }
-        
-
-        
     }
-    // console.log(maxFrequency,mode,modeObj)
     // check if the modeArr lenght is equal to the modeObj length
     if ( mode.length === Object.keys( modeObj ).length ) {
         mode = []
@@ -68,7 +61,7 @@ const performOperation = ( arr ) => {
 };
 
 
-const arrayForOperation = [1, 1, 2, 2, 3, 3]
+const arrayForOperation = [1, 1, 2, 2, 3, 3, 3, 3]
 
 const operation = performOperation(  arrayForOperation );
-console.log(operation)
+console.log( operation );
